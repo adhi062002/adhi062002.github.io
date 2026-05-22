@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adithya Satheesh — Robotics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1a1a1a;--ink2:#444;--ink3:#888;
+  --paper:#f8f6f1;--paper2:#eeece7;
+  --accent:#1D9E75;--accent2:#0F6E56;
+  --mono:'Space Mono',monospace;
+  --display:'Syne',sans-serif;
+}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);min-height:100vh}
+.wrap{max-width:780px;margin:0 auto;padding:3rem 2rem 5rem}
+
+/* HEADER */
+.hero{border-bottom:2px solid var(--ink);padding-bottom:2.5rem;margin-bottom:3rem}
+.hero-tag{font-family:var(--mono);font-size:11px;color:var(--accent2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem}
+.hero-name{font-size:clamp(2.8rem,9vw,5rem);font-weight:800;line-height:.92;letter-spacing:-.03em;color:var(--ink)}
+.hero-name span{color:var(--accent)}
+.hero-role{font-family:var(--mono);font-size:13px;color:var(--ink2);margin-top:1.25rem;line-height:1.7}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.badge{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--ink);border-radius:2px;color:var(--ink2)}
+.badge.hi{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* NAV */
+.nav{display:flex;gap:2rem;margin-bottom:3rem;border-bottom:1px solid var(--paper2);padding-bottom:.75rem;overflow-x:auto;scrollbar-width:none}
+.nav a{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);text-decoration:none;padding:4px 0;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
+.nav a:hover{color:var(--ink)}
+.nav a.active{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* SECTIONS */
+.section{display:none}
+.section.active{display:block}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent2);margin-bottom:2rem}
+
+/* PROJECTS */
+.proj{border:1px solid var(--paper2);margin-bottom:1.75rem;overflow:hidden;transition:border-color .2s}
+.proj:hover{border-color:#bbb}
+.proj-header{display:flex;justify-content:space-between;align-items:flex-start;padding:1.5rem 1.5rem .75rem}
+.proj-num{font-family:var(--mono);font-size:11px;color:var(--ink3)}
+.proj-year{font-family:var(--mono);font-size:11px;color:var(--accent2)}
+.proj-title{font-size:1.1rem;font-weight:700;line-height:1.25;padding:0 1.5rem .5rem}
+.proj-org{font-family:var(--mono);font-size:11px;color:var(--ink3);padding:0 1.5rem .75rem}
+.proj-body{font-size:14px;color:var(--ink2);line-height:1.7;padding:.75rem 1.5rem 1rem;border-top:1px solid var(--paper2)}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.4rem;padding:.75rem 1.5rem 1.5rem}
+.tag{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;background:var(--paper2);color:var(--ink2);border-radius:2px}
+
+/* EXPERIENCE */
+.exp{display:flex;gap:2rem;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--paper2)}
+.exp:last-child{border-bottom:none;margin-bottom:0}
+.exp-date{font-family:var(--mono);font-size:10px;color:var(--ink3);min-width:90px;padding-top:4px;line-height:1.7}
+.exp-role{font-size:1rem;font-weight:700;color:var(--ink)}
+.exp-org{font-family:var(--mono);font-size:11px;color:var(--accent2);margin:.25rem 0 .75rem}
+.exp-desc{font-size:14px;color:var(--ink2);line-height:1.7}
+
+/* SKILLS */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem}
+.skill-block{background:var(--paper2);padding:1.25rem;border-left:3px solid var(--accent)}
+.skill-cat{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:.75rem}
+.skill-list{font-size:13px;color:var(--ink2);line-height:2.1}
+
+/* PUBLICATIONS */
+.pub{padding:1.5rem;border-left:3px solid var(--ink);background:var(--paper2);margin-bottom:1.5rem}
+.pub-title{font-size:.95rem;font-weight:700;line-height:1.45;color:var(--ink);margin-bottom:.6rem}
+.pub-meta{font-family:var(--mono);font-size:10px;color:var(--ink3);line-height:2}
+.pub-venue{color:var(--accent2)}
+.pub-highlight{font-size:12px;color:var(--ink2);margin-top:.6rem;line-height:1.6;font-style:italic}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.contact-item{padding:1.25rem;background:var(--paper2);display:flex;flex-direction:column;gap:.4rem}
+.contact-label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.contact-val{font-size:13px;color:var(--ink);font-weight:500;word-break:break-all}
+.contact-val a{color:var(--accent2);text-decoration:none}
+.contact-val a:hover{text-decoration:underline}
+.research-box{padding:1.25rem 1.5rem;background:var(--paper2);font-family:var(--mono);font-size:11px;color:var(--ink3);line-height:2;border-left:3px solid var(--accent)}
+
+/* FOOTER */
+footer{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--paper2);font-family:var(--mono);font-size:10px;color:var(--ink3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+@media(max-width:600px){
+  .wrap{padding:2rem 1.25rem 4rem}
+  .contact-grid{grid-template-columns:1fr}
+  .exp{flex-direction:column;gap:.5rem}
+  .exp-date{min-width:auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-tag">Portfolio · Robotics Engineer</div>
+    <div class="hero-name">Adithya<br><span>Satheesh</span></div>
+    <div class="hero-role">
+      Autonomous Systems &nbsp;·&nbsp; Multi-Sensor Fusion &nbsp;·&nbsp; Embedded AI<br>
+      Bangalore, India &nbsp;·&nbsp; adithya062002@gmail.com
+    </div>
+    <div class="hero-meta">
+      <span class="badge hi">Open to work</span>
+      <span class="badge">B.E. 2024</span>
+      <span class="badge">CSIR-NAL</span>
+      <span class="badge">ROS2</span>
+      <span class="badge">2 Publications</span>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <a href="#" class="active" onclick="show('projects',this);return false">Projects</a>
+    <a href="#" onclick="show('pubs',this);return false">Publications</a>
+    <a href="#" onclick="show('exp',this);return false">Experience</a>
+    <a href="#" onclick="show('skills',this);return false">Skills</a>
+    <a href="#" onclick="show('contact',this);return false">Contact</a>
+  </nav>
+
+  <!-- PROJECTS -->
+  <div class="section active" id="sec-projects">
+    <div class="section-label">Selected work</div>
+
+    <div class="proj">
+      <div class="proj-header"><span class="proj-num">01</span><span class="proj-year">2024 – present</span></div>
+      <div class="proj-title">Multi-Sensor Fusion for Autonomous UGV Localization</div>
+      <div class="proj-org">CSIR-National Aerospace Laboratories</div>
+      <div class="proj-body">
+        Integrated visual-inertial odometry (VINS-Fusion) with 2D LiDAR and RGB-D sensing for GPS-denied navigation. Designed and implemented an error-state Extended Kalman Filter for pose fusion, with LiDAR-based pose correction and depth projection. Sensor synchronization and coordinate frame alignment handled using ROS2 TF. Evaluated trajectory performance using Absolute Trajectory Error (ATE) and Relative Pose Error (RPE), with architecture structured for future migration to factor-graph optimization.
+      </div>
+      <div class="proj-tags">
+        <span class="tag">ROS2</span><span class="tag">C++</span><span class="tag">EKF</span><span class="tag">VINS-Fusion</span><span class="tag">LiDAR</span><span class="tag">Intel RealSense</span><span class="tag">GPS-denied Nav</span>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-header"><span class="proj-num">02</span><span class="proj-year">2024 – present</span></div>
+      <div class="proj-title">YOLO-Based Real-Time Dent Detection System</div>
+      <div class="proj-org">CSIR-National Aerospace Laboratories</div>
+      <div class="proj-body">
+        Built real-time defect detection pipeline for aircraft surface inspection using YOLO (v5/v8) integrated with robotic sensing. Developed a dual-model YOLOv8 framework combining a dent detector and a rivet detector via cross-model Non-Maximum Suppression — eliminating cross-class confusion and achieving ~88% overall detection accuracy. Also developed a Modified YOLOv8 pipeline with CLAHE, Laplacian edge enhancement, and HSV normalization that reached 96.11% accuracy at confidence 0.3. Validated across composite, metal, and fibre metal laminate specimens under varied lighting and environmental conditions.
+      </div>
+      <div class="proj-tags">
+        <span class="tag">Python</span><span class="tag">YOLOv8</span><span class="tag">YOLOv5</span><span class="tag">OpenCV</span><span class="tag">ROS2</span><span class="tag">Computer Vision</span><span class="tag">Embedded</span>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-header"><span class="proj-num">03</span><span class="proj-year">2024</span></div>
+      <div class="proj-title">UGV Design for Aircraft Structure Inspection</div>
+      <div class="proj-org">CSIR-National Aerospace Laboratories</div>
+      <div class="proj-body">
+        Designed and iterated two mechanical versions of an Unmanned Ground Vehicle for automated aircraft surface scanning, supporting a 3D scanner payload (~3 kg). Resolved stability issues from the initial design — caused by an overhanging scanner mount — by centralizing the camera and adopting a simplified stand architecture with servo-controlled yaw and pitch. Developed ROS2 packages for servo control, motor drive, and image processing pipelines running on Raspberry Pi with remote laptop communication.
+      </div>
+      <div class="proj-tags">
+        <span class="tag">CAD</span><span class="tag">ROS2</span><span class="tag">Raspberry Pi</span><span class="tag">Differential Drive</span><span class="tag">3D Scanning</span><span class="tag">Servo Control</span>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-header"><span class="proj-num">04</span><span class="proj-year">2023</span></div>
+      <div class="proj-title">TinyML Impact Localization System</div>
+      <div class="proj-org">Personal / Academic</div>
+      <div class="proj-body">
+        Designed a real-time impact localization system using PZT sensors arranged on a structured grid, with onboard statistical time-series feature extraction. Trained and deployed lightweight machine learning models for impact classification — fully optimized for microcontroller-level execution on Arduino Nano 33 BLE with no external compute.
+      </div>
+      <div class="proj-tags">
+        <span class="tag">Arduino Nano 33 BLE</span><span class="tag">TinyML</span><span class="tag">Signal Processing</span><span class="tag">Edge AI</span><span class="tag">PZT Sensors</span>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-header"><span class="proj-num">05</span><span class="proj-year">2023</span></div>
+      <div class="proj-title">Autonomous Mobile Robot with Multi-Motor Control</div>
+      <div class="proj-org">Personal / Academic</div>
+      <div class="proj-body">
+        Developed a four-wheel drive robotic platform using continuous rotation servos with microsecond-level PWM control and calibrated neutral ranges. Implemented a ROS2-based teleoperation node publishing real-time motor commands and integrated sensor feedback for obstacle detection and navigation control.
+      </div>
+      <div class="proj-tags">
+        <span class="tag">Teensy 4.1</span><span class="tag">ROS2 Teleop</span><span class="tag">PWM Control</span><span class="tag">Encoders</span><span class="tag">Motor Control</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUBLICATIONS -->
+  <div class="section" id="sec-pubs">
+    <div class="section-label">Research publications</div>
+
+    <div class="pub">
+      <div class="pub-title">Enhancing Dent Detection Accuracy: A Study of YOLO Model-Based Architecture for Automated Dent Identification in Aircraft Structures</div>
+      <div class="pub-meta">
+        Ranjitha G, <strong>Adithya Satheesh*</strong>, Vijay Kumar A, Augustin M J, Nitesh Gupta<br>
+        <span class="pub-venue">Advanced Composites Division, CSIR-National Aerospace Laboratories, Bangalore · 2024</span><br>
+        *Project Associate CSIR-NAL
+      </div>
+      <div class="pub-highlight">
+        Modified YOLOv8 pipeline with 7-stage preprocessing · YOLO-NAS achieving 98.8% mAP@0.5 · Dual-model NMS framework · 96.11% detection accuracy at conf 0.3
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-title">Evaluating the Performance of YOLO Models for Dent Detection in Composite Aircraft Structures for Automated Visual Inspection</div>
+      <div class="pub-meta">
+        Augustin M J, Vijay Kumar A, Ranjitha G, <strong>Adithya Satheesh*</strong>, Nitesh Gupta<br>
+        <span class="pub-venue">Advanced Composites Division, CSIR-National Aerospace Laboratories, Bangalore · 2024</span><br>
+        *Project Associate CSIR-NAL
+      </div>
+      <div class="pub-highlight">
+        Systematic comparison of YOLOv5 and YOLOv8 across 9 model variants · Dual-model defect detection with cross-model NMS · ~88% overall detection accuracy across composite and metallic structures
+      </div>
+    </div>
+
+    <div class="pub" style="border-left-color:var(--paper2);background:var(--paper);border:1px solid var(--paper2)">
+      <div class="pub-title">Designs of Unmanned Ground Vehicle for Aircraft Structure Inspection</div>
+      <div class="pub-meta">
+        Augustin M J, Vijay Kumar A, Nitesh Gupta, <strong>Adithya Satheesh*</strong>, Ranjitha G, Uday Gwoda L<br>
+        <span class="pub-venue">Advanced Composites Division, CSIR-National Aerospace Laboratories, Bangalore · 2024</span><br>
+        *Project Associate CSIR-NAL
+      </div>
+      <div class="pub-highlight">
+        UGV conceptual and iterative mechanical design · ROS2 software architecture · YOLOv5 integration on prototype UGV platform
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section" id="sec-exp">
+    <div class="section-label">Experience &amp; Education</div>
+
+    <div class="exp">
+      <div class="exp-date">2024<br>present</div>
+      <div>
+        <div class="exp-role">Project Associate</div>
+        <div class="exp-org">CSIR — National Aerospace Laboratories · Bangalore</div>
+        <div class="exp-desc">Working within the Advanced Composites Division on robotics and embedded system development for experimental aircraft inspection platforms. Responsibilities span perception pipeline design (YOLO-based computer vision), sensor interface integration (LiDAR, RGB-D, IMU), real-time data acquisition, and hardware-software debugging. Co-authored two research papers and one technical report on the work.</div>
+      </div>
+    </div>
+
+    <div class="exp">
+      <div class="exp-date">2020 – 2024</div>
+      <div>
+        <div class="exp-role">Bachelor of Engineering</div>
+        <div class="exp-org">Graduated 2024</div>
+        <div class="exp-desc">Foundation in linear algebra, control systems, state-space modeling, signal processing, and embedded systems. Final-year focus on robotics, autonomous navigation, and computer vision applications culminating in practical deployment at CSIR-NAL.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section" id="sec-skills">
+    <div class="section-label">Technical skills</div>
+    <div class="skill-grid">
+      <div class="skill-block">
+        <div class="skill-cat">Languages</div>
+        <div class="skill-list">C++<br>Python<br>MATLAB</div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-cat">Robotics</div>
+        <div class="skill-list">ROS2 · TF2 · Nav2<br>Sensor Fusion<br>State Estimation<br>SLAM Concepts</div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-cat">Perception &amp; Vision</div>
+        <div class="skill-list">YOLO v5 / v8<br>RGB-D Processing<br>Point Cloud<br>OpenCV</div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-cat">Embedded Systems</div>
+        <div class="skill-list">Teensy 4.1<br>Arduino Nano 33 BLE<br>Raspberry Pi<br>PWM · Encoders · Motors</div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-cat">Mathematics</div>
+        <div class="skill-list">Linear Algebra<br>State-Space Modeling<br>Kalman Filtering<br>Error-State EKF</div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-cat">Tools &amp; Platforms</div>
+        <div class="skill-list">Git · GitHub<br>Linux (Ubuntu)<br>CMake · PlatformIO<br>CAD Modeling</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section" id="sec-contact">
+    <div class="section-label">Get in touch</div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <span class="contact-val"><a href="mailto:adithya062002@gmail.com">adithya062002@gmail.com</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-val"><a href="https://linkedin.com/in/adithya-satheesh" target="_blank">linkedin.com/in/adithya-satheesh</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Location</span>
+        <span class="contact-val">Bangalore, India</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Status</span>
+        <span class="contact-val" style="color:var(--accent)">Open to opportunities</span>
+      </div>
+    </div>
+    <div class="research-box">
+      <strong style="color:var(--ink2)">Research interests</strong><br>
+      Autonomous Navigation · Multi-Sensor Fusion · Visual-Inertial Odometry<br>
+      SLAM · Embedded AI · Robotics System Architecture
+    </div>
+  </div>
+
+  <footer>
+    <span>Adithya Satheesh · Robotics Engineer</span>
+    <span>adithya062002@gmail.com</span>
+  </footer>
+
+</div>
+
+<script>
+function show(id, el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
