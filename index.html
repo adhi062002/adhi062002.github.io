@@ -18,15 +18,24 @@
 body{background:var(--paper);color:var(--ink);font-family:var(--display);min-height:100vh}
 .wrap{max-width:780px;margin:0 auto;padding:3rem 2rem 5rem}
 
-/* HEADER */
+/* HEADER & PHOTO LAYOUT */
 .hero{border-bottom:2px solid var(--ink);padding-bottom:2.5rem;margin-bottom:3rem}
+.hero-content{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem}
+.hero-text{flex:1}
+.profile-img{width:130px;height:130px;object-fit:cover;border-radius:8px;border:1px solid var(--ink);background:var(--paper2);flex-shrink:0}
 .hero-tag{font-family:var(--mono);font-size:11px;color:var(--accent2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem}
 .hero-name{font-size:clamp(2.8rem,9vw,5rem);font-weight:800;line-height:.92;letter-spacing:-.03em;color:var(--ink)}
 .hero-name span{color:var(--accent)}
 .hero-role{font-family:var(--mono);font-size:13px;color:var(--ink2);margin-top:1.25rem;line-height:1.7}
-.hero-meta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:1.5rem}
+
+/* BADGES & BUTTONS */
 .badge{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--ink);border-radius:2px;color:var(--ink2)}
 .badge.hi{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+a.badge{text-decoration:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;font-weight:700}
+a.badge:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn-accent{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.btn-accent:hover{background:var(--accent2);border-color:var(--accent2)}
 
 /* NAV */
 .nav{display:flex;gap:2rem;margin-bottom:3rem;border-bottom:1px solid var(--paper2);padding-bottom:.75rem;overflow-x:auto;scrollbar-width:none}
@@ -86,6 +95,8 @@ footer{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--paper2);font-
 
 @media(max-width:600px){
   .wrap{padding:2rem 1.25rem 4rem}
+  .hero-content{flex-direction:column-reverse;gap:1.5rem}
+  .profile-img{width:100px;height:100px}
   .contact-grid{grid-template-columns:1fr}
   .exp{flex-direction:column;gap:.5rem}
   .exp-date{min-width:auto}
@@ -96,18 +107,23 @@ footer{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--paper2);font-
 <div class="wrap">
 
   <header class="hero">
-    <div class="hero-tag">Portfolio · Robotics Engineer</div>
-    <div class="hero-name">Adithya<br><span>Satheesh</span></div>
-    <div class="hero-role">
-      Autonomous Systems &nbsp;·&nbsp; Multi-Sensor Fusion &nbsp;·&nbsp; Embedded AI<br>
-      Bangalore, India &nbsp;·&nbsp; adithya062002@gmail.com
-    </div>
-    <div class="hero-meta">
-      <span class="badge hi">Open to work</span>
-      <span class="badge">B.E. 2024</span>
-      <span class="badge">CSIR-NAL</span>
-      <span class="badge">ROS2</span>
-      <span class="badge">2 Publications</span>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-tag">Portfolio · Robotics Engineer</div>
+        <div class="hero-name">Adithya<br><span>Satheesh</span></div>
+        <div class="hero-role">
+          Autonomous Systems &nbsp;·&nbsp; Multi-Sensor Fusion &nbsp;·&nbsp; Embedded AI<br>
+          Bangalore, India &nbsp;·&nbsp; adithya062002@gmail.com
+        </div>
+        <div class="hero-meta">
+          <span class="badge hi">Open to work</span>
+          <span class="badge">B.E. 2024</span>
+          <span class="badge">CSIR-NAL</span>
+          <span class="badge">ROS2</span>
+          <a href="resume.pdf" download="Adithya_Satheesh_Resume.pdf" class="badge btn-accent">↓ Download Resume</a>
+        </div>
+      </div>
+      <img src="profile.jpg" alt="Adithya Satheesh" class="profile-img">
     </div>
   </header>
 
@@ -119,7 +135,6 @@ footer{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--paper2);font-
     <a href="#" onclick="show('contact',this);return false">Contact</a>
   </nav>
 
-  <!-- PROJECTS -->
   <div class="section active" id="sec-projects">
     <div class="section-label">Selected work</div>
 
@@ -184,7 +199,6 @@ footer{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--paper2);font-
     </div>
   </div>
 
-  <!-- PUBLICATIONS -->
   <div class="section" id="sec-pubs">
     <div class="section-label">Research publications</div>
 
@@ -225,7 +239,6 @@ footer{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--paper2);font-
     </div>
   </div>
 
-  <!-- EXPERIENCE -->
   <div class="section" id="sec-exp">
     <div class="section-label">Experience &amp; Education</div>
 
@@ -248,7 +261,6 @@ footer{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--paper2);font-
     </div>
   </div>
 
-  <!-- SKILLS -->
   <div class="section" id="sec-skills">
     <div class="section-label">Technical skills</div>
     <div class="skill-grid">
@@ -279,7 +291,6 @@ footer{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--paper2);font-
     </div>
   </div>
 
-  <!-- CONTACT -->
   <div class="section" id="sec-contact">
     <div class="section-label">Get in touch</div>
     <div class="contact-grid">
