@@ -635,7 +635,8 @@ footer{
   <div class="nav-inner">
     <div class="nav-logo">AS_</div>
     <nav class="nav-links">
-      <a href="#" class="active" onclick="show('projects',this);return false">Projects</a>
+      <a href="#" class="active" onclick="show('about',this);return false">About</a>
+      <a href="#" onclick="show('projects',this);return false">Projects</a>
       <a href="#" onclick="show('pubs',this);return false">Publications</a>
       <a href="#" onclick="show('exp',this);return false">Experience</a>
       <a href="#" onclick="show('skills',this);return false">Skills</a>
@@ -647,6 +648,13 @@ footer{
 <div class="wrap">
 
   <!-- HERO -->
+
+
+
+  <!-- MAIN CONTENT -->
+  <main class="main" id="main-content">
+
+    <div class="section active" id="sec-about">
   <section class="hero hero-row">
     <div class="hero-glow"></div>
 
@@ -693,12 +701,10 @@ footer{
     </div><!-- /hero-left -->
     <div class="hero-scroll">scroll to explore</div>
   </section>
-
-  <!-- MAIN CONTENT -->
-  <main class="main">
+    </div><!-- /sec-about -->
 
     <!-- PROJECTS -->
-    <div class="section active" id="sec-projects">
+    <div class="section" id="sec-projects">
       <div class="section-header reveal">
         <span class="section-num">01</span>
         <h2 class="section-title">Selected Work</h2>
@@ -967,11 +973,11 @@ function show(id, el){
   el.classList.add('active');
   // trigger reveals inside new section
   setTimeout(()=>{
-    sec.querySelectorAll('.reveal,.skill-block,.exp,.pub,.proj').forEach((el,i)=>{
-      setTimeout(()=>el.classList.add('revealed'),i*70);
+    sec.querySelectorAll('.reveal,.skill-block,.exp,.pub,.proj,.hero-photo-wrap').forEach((el,i)=>{
+      setTimeout(()=>el.classList.add('revealed'),i*60);
     });
   },30);
-  window.scrollTo({top:document.querySelector('.sticky-nav').offsetHeight+10,behavior:'smooth'});
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 // ── PROJECT TOGGLE ──
@@ -999,7 +1005,7 @@ if(roleEl){
 
 // ── STAGGER initial active section ──
 setTimeout(()=>{
-  document.querySelectorAll('#sec-projects .reveal').forEach((el,i)=>{
+  document.querySelectorAll('#sec-about .hero-eyebrow, #sec-about .hero-name, #sec-about .hero-desc, #sec-about .hero-stats, #sec-about .hero-badges, #sec-about .hero-scroll, #sec-about .hero-photo-wrap').forEach((el,i)=>{
     setTimeout(()=>el.classList.add('revealed'),i*80+200);
   });
 },100);
