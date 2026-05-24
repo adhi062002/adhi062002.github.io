@@ -623,6 +623,28 @@ footer{
   .hero-photo-wrap{width:130px;height:130px}
 }
 
+
+/* NAV RESUME BUTTON */
+.nav-resume{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:6px 14px;
+  border:1.5px solid var(--accent);
+  color:var(--accent);
+  background:rgba(79,70,229,0.06);
+  font-weight:700;
+  transition:all .25s;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.nav-resume:hover{
+  background:var(--accent);
+  color:#fff;
+}
+
 </style>
 </head>
 <body>
@@ -642,6 +664,7 @@ footer{
       <a href="#" onclick="show('skills',this);return false">Skills</a>
       <a href="#" onclick="show('contact',this);return false">Contact</a>
     </nav>
+      <a class="nav-resume" href="assets/resume.pdf" download="Adithya_Satheesh_Resume.pdf">↓ Resume</a>
   </div>
 </div>
 
@@ -659,7 +682,7 @@ footer{
     <div class="hero-glow"></div>
 
     <div class="hero-photo-wrap">
-      <img src="assets/photo.png" alt="Adithya Satheesh" class="hero-photo" onerror="this.parentElement.style.display='none'">
+      <img src="assets/photo.jpg" alt="Adithya Satheesh" class="hero-photo" onerror="this.parentElement.style.display='none'">
     </div>
     <div class="hero-left">
     <div class="hero-eyebrow"><span></span>Robotics Engineer · Bangalore, India</div>
@@ -668,7 +691,7 @@ footer{
       <span class="line2">Satheesh</span>
     </div>
     <div class="hero-desc">
-       Robotics Engineer with hands-on experience building autonomous systems that operate in the real world.<br>
+      Robotics Engineer with hands-on experience building autonomous systems that operate in the real world.<br>
       I specialize in multi-sensor fusion, perception pipelines, and embedded AI —<br>
       translating complex sensor data into reliable, intelligent robotic behavior.<br>
       Based in Bangalore, currently at CSIR-NAL with 2 published research papers<br>
@@ -688,8 +711,8 @@ footer{
         <div class="stat-label">Robotics Projects</div>
       </div>
       <div class="stat">
-        <div class="stat-num"> Currently </div>
-        <div class="stat-label"> Project Associate CSIR - National Aerospace Laboratories (NAL) </div>
+        <div class="stat-num">Currently</div>
+        <div class="stat-label">CSIR - National Aerospace Laboratories (NAL)</div>
       </div>
     </div>
     <div class="hero-badges">
@@ -699,7 +722,6 @@ footer{
       <span class="badge">YOLO · OpenCV</span>
       <span class="badge">EKF · SLAM</span>
       <span class="badge">B.E. 2024</span>
-      <a class="badge badge-dl" href="assets/resume.pdf" download="Adithya_Satheesh_Resume.pdf">↓ Resume</a>
     </div>
     </div><!-- /hero-left -->
     <!--<div class="hero-scroll">scroll to explore</div>-->
